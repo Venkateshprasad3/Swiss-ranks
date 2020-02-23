@@ -16,6 +16,12 @@
  place index.html in templates folder
  images in static folder
  app.py in project folder
+ swissranks.db in project folder
+ 
+ python app.py command to run the code
+ output will be displayed in desired folder
+ 
+ 
  
  
  
