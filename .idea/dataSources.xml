@@ -7,5 +7,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\Venkatesh Prasad\PycharmProjects\Swiss-ranks\test.db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="swissdb" uuid="16547e44-903c-47c9-8e61-0e15d6bad6b4">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Venkatesh Prasad\PycharmProjects\Swiss-ranks\swissdb.db</jdbc-url>
+    </data-source>
   </component>
 </project>

@@ -108,7 +108,7 @@
 
                     ]);
 
-                    var options = {'title': 'Status of Parts pie chart', 'width': 550, 'height': 400};
+                    var options = {'title': 'Status of Parts pie chart', 'width': 1000, 'height': 470};
                     drawPieChart(data, options);
 
                 }
@@ -188,7 +188,6 @@
 </head>
 <body  style="background-color: rgba(168,186,168,0.49)">
 
-
 <div class="row">
     <div style="text-align: center;display:flex; background-color: #064876;height: 75px;color: white;">
         <img src="{{ url_for('static', filename='imag.png') }}" STYLE="height: 75px;width: 75px">
@@ -207,10 +206,11 @@
       </select>
 </div>
 <button style="background-color:#064876;color: white;margin-top:10px;margin-left: 750px " type="button" class="btn" onclick="getDataByOption()"><b>Get Reports</b></button>
-<div id="container" style="height: 500px;background-color:white;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) ;margin-left: 50px;margin-top:30px;padding-top:10px;margin-right: 50px">
-   <h2  > Most of the parts are:{{ part }},{{ highestStatus }}</h2>
-    <h2> Top Engineers: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#1:{{ Z[4] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2:{{ Z[3] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       #3:{{ Z[2] }}</h2>
-
+<div id="container" style="width:1500px;position:relative;display:inline-flex;height: 500px;background-color:white;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) ;margin-left: 50px;margin-top:30px;padding-top:10px;margin-right: 50px">
+    <img src="{{ url_for('static', filename='prize.png') }}" style="margin-left:400px;margin-top:70px;width:700px;"/>
+    <h1 style="position:absolute;margin-left: 670px;margin-top:75px">{{ topEngineer[0] }}</h1>
+    <h1 style="position:absolute;margin-left: 450px;margin-top:150px">{{ topEngineer[1] }}</h1>
+    <h1 style="position:absolute;margin-left: 900px;margin-top:200px">{{ topEngineer[2] }}</h1>
 </div>
 <div id="container2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);height: 500px ;margin-left: 50px;margin-top:30px;margin-right: 50px;display: none"></div>
 
