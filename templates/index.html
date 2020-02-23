@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:>
+
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <title>Reports</title>
+    <script type="text/javascript">
+        function removeDiv() {
+            var div = document.getElementById('container2');
+            div.style.display="none";
+            }
+
+
+            function drawPieChart(data, options) {
+                var chart = new google.visualization.PieChart(document.getElementById('container'));
+                chart.draw(data, options);
+            }
+
+            function drawBarChart(data, options) {
+                var chart = new google.visualization.BarChart(document.getElementById('container'));
+                chart.draw(data, options);
+            }
+
+            function getDataByOption() {
+
+                switch (document.getElementById('selectedOption').value) {
+                    case 'Part Reports By Status': {
+                        groupByStatus();
+                        groupByStatus2()
+                        break;
+                    }
+                    case 'Engineer Report': {
+                        groupByEngineerData();
+                        break;
+
+                    }
+
+                    case 'Approver Report': {
+                        groupByApproverDat();
+                        break;
+                    }
+                    case 'Custom Report':{
+                        groupByApproverDat2();
+                        break;
+                    }
+
+
+
+                }
+            }
+
+            function groupByStatus2() {
+                //    var msgContainer = document.createElement('div');
+                // msgContainer.setAttribute('id', 'container2');
+
+
+                google.charts.load('current', {'packages': ['corechart']});
+                google.charts.setOnLoadCallback(drawChartv);
+
+                function drawChartv() {
+
+
+                    var data = google.visualization.arrayToDataTable([
+                        ['Engineer ', 'Parts'],
+                        ['Approved  ', {{ groupByStatusData[0]  }}],
+                        ['Under Query  ', {{ groupByStatusData[1] }}],
+                        ['Draft', {{ groupByStatusData[2] }}],
+                        ['In progress', {{ groupByStatusData[3] }}],
+
+                    ]);
+
+                    var options = {title: 'Status on Parts BarChart'};
+                    drawBarChartv(data, options);
+
+                    function drawBarChartv(data, options) {
+                        var chart = new google.visualization.BarChart(document.getElementById('container2'));
+                        chart.draw(data, options);
+                    }
+
+
+                }
+            }
+
+            function groupByStatus() {
+                document.getElementById("container2").style.display="block";
+                google.charts.load('current', {'packages': ['corechart']});
+                google.charts.setOnLoadCallback(drawChart1);
+
+                function drawChart1() {
+                    var Approved =
+                    {{ groupByStatusData[0] }}
+                    var Underquery =
+                    {{ groupByStatusData[1] }}
+                    var Draft =
+                    {{ groupByStatusData[2] }}
+                    var Inprogress =
+                    {{ groupByStatusData[3] }}
+                    var data = google.visualization.arrayToDataTable([
+                        ['Status', 'Result'],
+                        ['Approved', Approved],
+                        ['Under query', Underquery],
+                        ['Draft', Draft],
+                        ['In progress', Inprogress],
+
+
+                    ]);
+
+                    var options = {'title': 'Status of Parts pie chart', 'width': 550, 'height': 400};
+                    drawPieChart(data, options);
+
+                }
+            }
+
+            function groupByEngineerData() {
+                removeDiv();
+
+                google.charts.load('current', {'packages': ['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+
+
+                    var data = google.visualization.arrayToDataTable([
+                        ['Engineer ', 'Parts'],
+                        ['Engineer 1 ', {{ groupByEngineerData[0]  }}],
+                        ['Engineer 2  ', {{ groupByEngineerData[1] }}],
+                        ['Engineer 3', {{ groupByEngineerData[2] }}],
+                        ['Engineer 4', {{ groupByEngineerData[3] }}],
+                        ['Engineer 5', {{ groupByEngineerData[4] }}]
+                    ]);
+
+                    var options = {title: 'Motor Parts By Engineers'};
+                    drawBarChart(data, options);
+
+
+                }
+            }
+
+            function groupByApproverDat() {
+
+                removeDiv();
+                console.log("on check()");
+                google.charts.load("current", {packages: ["corechart"]});
+                google.charts.setOnLoadCallback(drawCharta);
+
+                function drawCharta() {
+
+                    var data = google.visualization.arrayToDataTable([
+                        ["Approver", "No of Approvals"],
+                        ["Approver 1", {{ groupByApproverData[0] }}],
+                        ["Approver 2 ", {{ groupByApproverData[1] }}],
+                        ["Approver 3", {{ groupByApproverData[2] }}],
+                        ["Approver 4", {{ groupByApproverData[3] }}],
+                        ["Approver 5", {{ groupByApproverData[4] }}],
+
+                    ]);
+
+                    var view = new google.visualization.DataView(data);
+
+
+                    var options = {
+                        title: "Number of approvals by approver",
+
+                    };
+
+
+                    var chart = new google.visualization.BarChart(document.getElementById("container"));
+                    chart.draw(view, options);
+                }
+            }
+
+
+
+
+
+
+
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+<body  style="background-color: rgba(168,186,168,0.49)">
+
+
+<div class="row">
+    <div style="text-align: center;display:flex; background-color: #064876;height: 75px;color: white;">
+        <img src="{{ url_for('static', filename='imag.png') }}" STYLE="height: 75px;width: 75px">
+        <h1 style="margin: auto;padding-top: 3px ">Swiss Ranks Reports</h1>
+    </div>
+</div>
+<div style="display: flex">
+    <h3 style="margin-left: 400px">Select options to view reports:</h3>
+    <select style="width: 400px;padding-left: 10px;margin-left: 20px;margin-top: 10px" class="form-control" id="selectedOption">
+        <option>Select One</option>
+        <option>Part Reports By Status</option>
+        <option>Engineer Report</option>
+        <option>Approver Report</option>
+        <option>Custom Report</option>
+        <option>Best </option>
+      </select>
+</div>
+<button style="background-color:#064876;color: white;margin-top:10px;margin-left: 750px " type="button" class="btn" onclick="getDataByOption()"><b>Get Reports</b></button>
+<div id="container" style="height: 500px;background-color:white;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) ;margin-left: 50px;margin-top:30px;padding-top:10px;margin-right: 50px">
+   <h2  > Most of the parts are:{{ part }},{{ highestStatus }}</h2>
+    <h2> Top Engineers: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#1:{{ Z[4] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2:{{ Z[3] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       #3:{{ Z[2] }}</h2>
+
+</div>
+<div id="container2" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);height: 500px ;margin-left: 50px;margin-top:30px;margin-right: 50px;display: none"></div>
+
+
+
+</body>
+
+</html>
