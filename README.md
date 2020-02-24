@@ -29,12 +29,9 @@ Swiss-ranks
 ├───static
 │       imag.png
 │       images.jfif
-│       prize.png
-│       test.js
+│       prize.png  
 │
 └───templates
-        bg.jpg
-        imag.png
         index.html
  ```
  #### To start app
