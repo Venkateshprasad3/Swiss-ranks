@@ -1,25 +1,29 @@
 # Swiss-ranks
 
- pycharm project(pictorial representation of data)
+PyCharm project(pictorial representation of data)
  
- Technologies used:Flask,jinja     ;
- Languages used:python    ;
- Web technologies used:HTML5,CSS,JavaScript   ;
+ #### Technologies used : Flask, Jinja     
+ #### Languages used : Python    
+ #### Web technologies used : HTML5,CSS,JavaScript
  
+ ### How to run : 
  
- install packages Flask,render_template;
+ #### Clone/Download Repo:
+  
+  ```git clone https://github.com/Venkateshprasad3/Swiss-ranks.git```
+  
+ #### Install packages Flask, sqlite3
  
- pip install Flask
- pip install render_template
- pip install sql_lite3
+ ```pip install Flask```
  
- place index.html in templates folder
- images in static folder
- app.py in project folder
- swissranks.db in project folder
+ ```pip install sqlite3```
  
- python app.py command to run the code
- output will be displayed in desired folder
+ #### Check if files are in the order below
+ 
+   ```python app.py```
+  
+ 
+ Copy link and open in browser, Outputs are displayed.
  
  
  
