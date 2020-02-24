@@ -20,6 +20,25 @@ PyCharm project(pictorial representation of data)
  
  #### Check if files are in the order below
  
+ ```
+Swiss-ranks
+│   app.py
+│   README.md
+│   swissdb.db
+│
+├───static
+│       imag.png
+│       images.jfif
+│       prize.png
+│       test.js
+│
+└───templates
+        bg.jpg
+        imag.png
+        index.html
+ ```
+ #### To start app
+   
    ```python app.py```
   
  
